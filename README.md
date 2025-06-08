@@ -24,4 +24,6 @@ Generate noise with a customizable power spectral density (PSD), where an **`alp
   - Normalize the signal to prevent clipping
   - Convert to 16-bit integers 
   - Save as WAV file
+
+Uncomment the graph if you want to plot the power spectral density (PSD) on a log-log plot;
   
