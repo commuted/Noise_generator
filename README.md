@@ -11,7 +11,7 @@ pip install custom_noise
 Or install from source:
 
 ```bash
-git clone https://github.com/yourusername/custom_noise.git
+git clone https://github.com/commuted/custom_noise.git
 cd custom_noise
 pip install -e .
 ```

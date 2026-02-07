@@ -74,13 +74,20 @@ The package exposes convenience functions (`pink_noise`, `brown_noise`, etc.) an
 **Core algorithm** (`custom_noise/noise_generator.py`):
 1. Generate Gaussian white noise using numpy's modern RNG
 2. Apply FFT to transform to frequency domain
-3. Scale frequencies by 1/|f|^(alpha/2) to achieve desired PSD slope
+3. Scale frequencies by 1/|f|^(alpha/2) to achieve desired PSD slope (DC component at 0 Hz is not scaled to prevent unbounded drift)
 4. Inverse FFT back to time domain
 5. Normalize and convert to requested output format
 
 **Key parameters**:
+- `alpha` and `noise_type` are **mutually exclusive** — provide one or the other
 - `alpha`: Controls the PSD slope (0=white, 1=pink, 2=brown, negative=blue/purple)
 - `noise_type`: Named preset ("white", "pink", "brown", "blue", "violet", etc.)
 - `output_file`: When provided, saves as WAV file; otherwise returns array only
 - `dtype`: Output format - "int16" (default), "float32", or "float64"
 - `random_seed`: Ensures reproducibility (default: 42, use None for random)
+
+## Code Style
+
+- Ruff: line length 100, rules E/W/F/I/UP/B, double quotes
+- MyPy: strict mode, Python 3.9 target
+- CI runs on Python 3.9–3.12 via GitHub Actions (lint, type check, test)
